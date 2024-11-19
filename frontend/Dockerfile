@@ -1,20 +1,11 @@
-FROM node:21-alpine AS builder
-
-RUN npm install -g @angular/cli@18.0.0
+FROM node:22-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
-
 COPY . .
+RUN npm install
+RUN npm run build --configuration=production
 
-RUN ng build --configuration=production
+EXPOSE 4000
 
-FROM nginx:alpine
-
-COPY --from=builder /app/dist/frontend /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npx", "http-server", "dist/frontend/browser", "-p", "4000", "-c-1", "--proxy", "http://backend:3000"]
