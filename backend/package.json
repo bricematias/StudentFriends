@@ -24,8 +24,11 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "^5.22.0",
+<<<<<<< HEAD
     "dotenv": "^16.4.5",
     "mysql2": "^3.11.4",
+=======
+>>>>>>> eb93e0b9cebc8598a1a7d8a9ab37df64ca23ff1a
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },

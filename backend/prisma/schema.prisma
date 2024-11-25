@@ -12,3 +12,60 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+<<<<<<< HEAD
+=======
+
+enum UserType {
+  ADMIN
+  ENTREPRISE
+  USER
+}
+
+enum FriendStatus {
+  PENDING
+  ACCEPTED
+  BLOCKER
+}
+
+enum EventParticipantStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  user_type UserType
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model friendShips {
+  id        String       @id @default(cuid())
+  user_id   String       @default(uuid())
+  friend_id String       @default(uuid())
+  status    FriendStatus
+  createdAt DateTime     @default(now())
+}
+
+model event {
+  id           String   @id @default(cuid())
+  name         String   @unique
+  description  String
+  organizer_id String   @default(uuid())
+  location     String
+  date         DateTime
+  createdAt    DateTime @default(now())
+}
+
+model event_participants {
+  id        String                 @id @default(cuid())
+  event_id  String                 @default(uuid())
+  user_id   String                 @default(uuid())
+  status    EventParticipantStatus
+  createdAt DateTime               @default(now())
+}
+>>>>>>> eb93e0b9cebc8598a1a7d8a9ab37df64ca23ff1a
