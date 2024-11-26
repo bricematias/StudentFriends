@@ -3,7 +3,7 @@ FROM node:22-alpine
 WORKDIR /app
 
 COPY . .
-RUN npm install
+RUN yarn install
 RUN npm run build --configuration=production
 
 EXPOSE 4000
