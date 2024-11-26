@@ -12,8 +12,6 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-<<<<<<< HEAD
-=======
 
 enum UserType {
   ADMIN
@@ -68,4 +66,3 @@ model event_participants {
   status    EventParticipantStatus
   createdAt DateTime               @default(now())
 }
->>>>>>> eb93e0b9cebc8598a1a7d8a9ab37df64ca23ff1a
